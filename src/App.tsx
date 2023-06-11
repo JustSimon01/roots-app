@@ -1,23 +1,27 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
 import SideMenu from './components/SideMenu/SideMenu';
-import Card from './components/Сard/Card';
+import 'normalize.css';
+import styles from './App.module.css';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import MainPage from './pages/mainPage/MainPage';
+import Modal from './components/Modal/Modal';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const location = useLocation();
+  const background = location.state && location.state.background;
+  const navigate = useNavigate();
+
+  function closePopup() {
+    navigate(-1);
+  }
 
   return (
-    <>
+    <div className={styles.App}>
       <SideMenu header={'Roots'} />
-      <div className="main-block">
-        <Card
-          img={'https://www.cartonionline.com/tv/boing/Gennaio/Johnny_Bravo_Pointing_3.jpg'}
-          name={'Джонни Браво'}
-        />
-      </div>
-    </>
+      <Routes location={background || location}>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+      <Modal handleClose={closePopup}></Modal>
+    </div>
   );
 }
 
