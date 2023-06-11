@@ -4,6 +4,7 @@ import styles from './App.module.css';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import MainPage from './pages/mainPage/MainPage';
 import Modal from './components/Modal/Modal';
+import PersonInfo from './components/PersonInfo/PersonInfo';
 
 function App() {
   const location = useLocation();
@@ -20,7 +21,14 @@ function App() {
       <Routes location={background || location}>
         <Route path="/" element={<MainPage />} />
       </Routes>
-      <Modal handleClose={closePopup}></Modal>
+      <Modal handleClose={closePopup}>
+        <PersonInfo
+          photo="https://www.cartonionline.com/tv/boing/Gennaio/Johnny_Bravo_Pointing_3.jpg"
+          name="Джонни Браво"
+          dateOfBirth="01 апреля 1970 г."
+          about="Харизматичный мультяшный герой с мускулистым телом, ослепительной улыбкой и известным харканием. Он всегда в центре внимания, уверен в своей привлекательности и стремится покорять сердца девушек. Несмотря на свою самоуверенность, Джонни также имеет доброе сердце и помогает тем, кто в беде. Его приключения всегда наполнены стилем, юмором и весельем, оставляя яркий след в сердцах и улыбках людей, с которыми он встречается."
+        />
+      </Modal>
     </div>
   );
 }

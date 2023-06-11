@@ -1,12 +1,13 @@
 .modal {
   display: block;
+  padding: 30px;
   box-sizing: border-box;
   position: fixed;
   z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 40px;
+  border-radius: 10px;
   height: 90%;
   width: 90%;
   background-color: #ffffff;
@@ -18,8 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 2%;
-  right: 2%;
+  top: 1%;
+  right: 1%;
   background-color: transparent;
   color: black;
   cursor: pointer;
