@@ -1,0 +1,11 @@
+.App {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}

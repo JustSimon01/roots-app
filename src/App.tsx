@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import SideMenu from './components/SideMenu/SideMenu';
+import 'normalize.css';
+import styles from './App.module.css';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import MainPage from './pages/mainPage/MainPage';
+import Modal from './components/Modal/Modal';
+import PersonInfo from './components/PersonInfo/PersonInfo';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const location = useLocation();
+  const background = location.state && location.state.background;
+  const navigate = useNavigate();
+
+  function closePopup() {
+    navigate(-1);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className={styles.App}>
+      <SideMenu header={'Roots'} />
+      <Routes location={background || location}>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+      <Modal handleClose={closePopup}>
+        <PersonInfo
+          photo="https://www.cartonionline.com/tv/boing/Gennaio/Johnny_Bravo_Pointing_3.jpg"
+          name="Джонни Браво"
+          dateOfBirth="01 апреля 1970 г."
+          about="Харизматичный мультяшный герой с мускулистым телом, ослепительной улыбкой и известным харканием. Он всегда в центре внимания, уверен в своей привлекательности и стремится покорять сердца девушек. Несмотря на свою самоуверенность, Джонни также имеет доброе сердце и помогает тем, кто в беде. Его приключения всегда наполнены стилем, юмором и весельем, оставляя яркий след в сердцах и улыбках людей, с которыми он встречается."
+        />
+      </Modal>
+    </div>
+  );
 }
 
-export default App
+export default App;
