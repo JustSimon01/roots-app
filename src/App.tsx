@@ -5,6 +5,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import MainPage from './pages/mainPage/MainPage';
 import Modal from './components/Modal/Modal';
 import PersonInfo from './components/PersonInfo/PersonInfo';
+import PersonPage from './pages/personPage/PersonPage';
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
       <SideMenu header={'Roots'} />
       <Routes location={background || location}>
         <Route path="/" element={<MainPage />} />
+        <Route path="/personid" element={<PersonPage />} />
       </Routes>
       <Modal handleClose={closePopup}>
         <PersonInfo
