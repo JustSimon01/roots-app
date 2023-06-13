@@ -6,6 +6,7 @@ import MainPage from './pages/mainPage/MainPage';
 import Modal from './components/Modal/Modal';
 import PersonInfo from './components/PersonInfo/PersonInfo';
 import PersonPage from './pages/personPage/PersonPage';
+import bd from './temp/bd.json';
 
 function App() {
   const location = useLocation();
