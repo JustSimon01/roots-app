@@ -1,12 +1,16 @@
 import { FunctionComponent } from 'react';
 import styles from './SideMenuElement.module.css';
+import { Link, useLocation } from 'react-router-dom';
+import { IPerson } from '../../../utils/inerfaces';
 
-interface ISideMenuElement {
-  name: string;
-}
+const SideMenuElement: FunctionComponent<{ person: IPerson }> = ({ person }) => {
+  const location = useLocation();
 
-const SideMenuElement: FunctionComponent<ISideMenuElement> = ({ name }) => {
-  return <li className={styles.text}>{name}</li>;
+  return (
+    <Link to={`/person/${person._id}`} state={{ background: location }}>
+      <li className={styles.text}>{person.name}</li>
+    </Link>
+  );
 };
 
 export default SideMenuElement;

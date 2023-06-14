@@ -1,20 +1,20 @@
 import styles from './SideMenu.module.css';
 import { FC } from 'react';
 import SideMenuElement from './SideMenuElement/SideMenuElement';
+import { IPerson } from '../../utils/inerfaces';
 
-type TSideMenu = {
+interface ISideMenu {
   header?: string;
-};
+  persons: Array<IPerson>;
+}
 
-const SideMenu: FC<TSideMenu> = ({ header }) => {
+const SideMenu: FC<ISideMenu> = ({ header, persons }) => {
   return (
     <>
       <div className={styles.sideMenu}>
         <h1 className={styles.header}>{header || ''}</h1>
         <ul className={styles.list}>
-          <SideMenuElement name={'Джонни Браво'} />
-          <SideMenuElement name={'Джекки Браво'} />
-          <SideMenuElement name={'Джонни Браво мл.'} />
+          {persons && persons.map((person) => <SideMenuElement person={person} key={person._id} />)}
         </ul>
       </div>
     </>

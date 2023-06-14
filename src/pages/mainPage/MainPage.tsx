@@ -1,10 +1,13 @@
 import { FunctionComponent } from 'react';
 import Card from '../../components/Сard/Card';
+import bd from '../../temp/bd.json';
+
+const person = bd[0];
 
 const MainPage: FunctionComponent = () => {
   return (
     <div className="main-block">
-      <Card img={'https://www.cartonionline.com/tv/boing/Gennaio/Johnny_Bravo_Pointing_3.jpg'} name={'Джонни Браво'} />
+      <Card photo={person.photo} name={person.name} key={person._id} _id={person._id} />
     </div>
   );
 };
