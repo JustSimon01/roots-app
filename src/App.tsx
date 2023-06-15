@@ -22,7 +22,7 @@ function App() {
       <SideMenu header={'Roots'} persons={bd} />
       <Routes location={background || location}>
         <Route path="/" element={<MainPage />} />
-        <Route path="/person/id" element={<PersonPage person={bd[0]} />} />
+        <Route path="/person/:id" element={<PersonPage person={bd[0]} />} />
       </Routes>
       {background && (
         <Routes>
