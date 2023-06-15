@@ -7,7 +7,7 @@ const SideMenuElement: FunctionComponent<{ person: IPerson }> = ({ person }) => 
   const location = useLocation();
 
   return (
-    <Link to={`/person/${person._id}`} state={{ background: location }}>
+    <Link to={`/person/${person._id}`}>
       <li className={styles.text}>{person.name}</li>
     </Link>
   );
