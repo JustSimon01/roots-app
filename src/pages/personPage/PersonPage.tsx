@@ -1,23 +1,20 @@
 import { FunctionComponent } from 'react';
-import backArrow from '../../assets/Back.svg';
 import styles from './PersonPage.module.css';
 import PersonInfo from '../../components/PersonInfo/PersonInfo';
+import BackButton from '../../components/Navigations/BackButton/BackButton';
+import { useNavigate } from 'react-router-dom';
 
-interface IPersonPage {
-  person: {
-    _id: string;
-    name: string;
-    photo: string;
-    dateOfBirth: string;
-    about: string;
-  };
-}
+const PersonPage: FunctionComponent = () => {
+  const navigate = useNavigate();
 
-const PersonPage: FunctionComponent<IPersonPage> = ({ person }) => {
+  function returnToMainPage() {
+    navigate('/');
+  }
+
   return (
     <div className={styles.personPage}>
       <PersonInfo />
-      <img className={styles.arrow} src={backArrow} alt="возврат на предыдущую страницу" />
+      <BackButton type="Back" handleClose={returnToMainPage} />
     </div>
   );
 };
