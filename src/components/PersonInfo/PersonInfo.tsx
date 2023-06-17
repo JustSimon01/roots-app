@@ -3,15 +3,6 @@ import styles from './PersonInfo.module.css';
 import { useParams } from 'react-router-dom';
 import db from '../../temp/bd.json';
 
-// interface IPerson {
-//   person: {
-//     name: string;
-//     dateOfBirth: string;
-//     about: string;
-//     photo: string;
-//   };
-// }
-
 const PersonInfo: FunctionComponent = () => {
   const { id } = useParams();
   const person = db.find((item) => item._id === id);

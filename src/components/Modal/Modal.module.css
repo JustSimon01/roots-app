@@ -14,16 +14,9 @@
 }
 
 .closeButton {
-  padding: 0;
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   top: 1%;
   right: 1%;
-  background-color: transparent;
-  color: black;
-  cursor: pointer;
 }
 
 .closeButtonImg {

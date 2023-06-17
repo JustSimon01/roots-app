@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import styles from './Modal.module.css';
 import Overlay from '../Overlay/Overlay';
 import closeBtn from '../../assets/Close.svg';
+import BackButton from '../Navigations/BackButton/BackButton';
 
 interface ModalProps {
   children?: JSX.Element;
@@ -21,14 +22,9 @@ const Modal: FunctionComponent<ModalProps> = ({ children, handleClose }) => {
   return ReactDom.createPortal(
     <>
       <div className={`${styles.modal}`}>
-        <button className={`${styles.closeButton}`}>
-          <img
-            className={`${styles.closeButtonImg}`}
-            src={closeBtn}
-            alt="Кнопка закрытия попапа"
-            onClick={handleClose}
-          />
-        </button>
+        <div className={`${styles.closeButton}`}>
+          <BackButton type="Close" handleClose={handleClose} />
+        </div>
         {children}
       </div>
       <Overlay handleClose={handleClose} />
